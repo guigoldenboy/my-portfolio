@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  post_build:
+    commands:
+      - aws cloudfront create-invalidation --distribution-id E1QALWFEO82022 --paths "/*"
+
+artifacts:
+  files:
+    - index.html
