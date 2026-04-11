@@ -4,24 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guilherme Ribeiro — Dev & Student</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --cream: #f5efe6;
-      --cream-light: #faf7f2;
-      --cream-dark: #ebe3d5;
-      --warm: #d9cdbf;
-      --card: #fffcf7;
-      --border: #e0d5c5;
-      --red: #c0392b;
-      --red-soft: #d4524a;
-      --red-dim: rgba(192, 57, 43, 0.12);
-      --red-glow: rgba(192, 57, 43, 0.40);
-      --dark: #2c1810;
-      --text: #3d2b1f;
-      --muted: #8c7b6b;
-      --font-display: 'Cinzel', serif;
-      --font-body: 'EB Garamond', serif;
+      --cream: #111111;
+      --cream-light: #1a1a1a;
+      --cream-dark: #0c0c0c;
+      --warm: #2a2a2a;
+      --card: #1c1c1c;
+      --border: #303030;
+      --red: #c8102e;
+      --red-soft: #e0304a;
+      --red-dim: rgba(200, 16, 46, 0.12);
+      --red-glow: rgba(200, 16, 46, 0.45);
+      --dark: #f0f0f0;
+      --text: #d8d8d8;
+      --muted: #888888;
+      --font-display: 'Poppins', sans-serif;
+      --font-body: 'Poppins', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,7 +48,7 @@
     .cursor-ring {
       position: fixed;
       width: 36px; height: 36px;
-      border: 1.5px solid rgba(192,57,43,0.4);
+      border: 1.5px solid rgba(200,16,46,0.4);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9998;
@@ -74,7 +74,7 @@
       align-items: center;
       padding: 1.4rem 3.5rem;
       z-index: 100;
-      background: linear-gradient(to bottom, rgba(245,239,230,0.97), rgba(245,239,230,0.0));
+      background: linear-gradient(to bottom, rgba(17,17,17,0.97), rgba(17,17,17,0.0));
       backdrop-filter: blur(6px);
     }
     .nav-logo {
@@ -111,17 +111,32 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 55% 65% at 65% 45%, rgba(192,57,43,0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 45% 55% at 25% 75%, rgba(192,57,43,0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 55% 65% at 65% 45%, rgba(200,16,46,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 55% at 25% 75%, rgba(200,16,46,0.04) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero-grid {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(44,24,16,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(44,24,16,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
+        url('cloud.png'),
+        url('cloud.png'),
+        url('cloud.png'),
+        url('cloud.png'),
+        url('cloud.png'),
+        url('cloud.png'),
+        url('cloud.png');
+      background-size: 320px, 200px, 260px, 180px, 300px, 220px, 240px;
+      background-position:
+        5% 20%,
+        75% 10%,
+        40% 70%,
+        85% 60%,
+        20% 80%,
+        60% 35%,
+        50% 5%;
+      background-repeat: no-repeat;
+      opacity: 0.85;
       pointer-events: none;
     }
     .hero-content {
@@ -199,7 +214,7 @@
       border: 2px solid var(--red);
     }
     .btn-primary:hover {
-      box-shadow: 0 0 28px var(--red-glow), 0 0 60px rgba(192,57,43,0.2);
+      box-shadow: 0 0 28px var(--red-glow), 0 0 60px rgba(200,16,46,0.2);
       transform: translateY(-2px);
     }
     .btn-secondary {
@@ -210,7 +225,7 @@
     .btn-secondary:hover {
       border-color: var(--red);
       color: var(--red);
-      box-shadow: 0 0 20px rgba(192,57,43,0.15);
+      box-shadow: 0 0 20px rgba(200,16,46,0.15);
       transform: translateY(-2px);
     }
 
@@ -262,7 +277,7 @@
       color: var(--dark);
     }
 
-    .skills-section { background: var(--cream-dark); }
+    .skills-section { background: var(--cream); }
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -283,14 +298,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(192,57,43,0.06), transparent 60%);
+      background: radial-gradient(circle at 50% 0%, rgba(200,16,46,0.06), transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
     }
     .skill-card:hover::before { opacity: 1; }
     .skill-card:hover {
       border-color: var(--red);
-      box-shadow: 0 0 22px rgba(192,57,43,0.12);
+      box-shadow: 0 0 22px rgba(200,16,46,0.12);
       transform: translateY(-3px);
     }
     .skill-icon { font-size: 1.6rem; margin-bottom: 0.9rem; }
@@ -349,7 +364,7 @@
     .tag:hover {
       border-color: var(--red);
       color: var(--red);
-      box-shadow: 0 0 10px rgba(192,57,43,0.15);
+      box-shadow: 0 0 10px rgba(200,16,46,0.15);
     }
 
     .aws-section { background: var(--cream-dark); }
@@ -403,7 +418,7 @@
     }
     .aws-node:hover {
       border-color: var(--red);
-      box-shadow: 0 0 20px rgba(192,57,43,0.12);
+      box-shadow: 0 0 20px rgba(200,16,46,0.12);
     }
     .aws-node-icon { font-size: 2rem; margin-bottom: 0.6rem; }
     .aws-node-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; color: var(--dark); }
@@ -511,7 +526,7 @@
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <div class="nav-logo">G<span>.</span>Ribeiro</div>
+  <div class="nav-logo">G<span>. </span>Ribeiro</div>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -529,7 +544,7 @@
     <p class="hero-title">Information Technology Student @ FCUL</p>
     <p class="hero-desc">
       3rd year Information Technologies student at Faculdade de Ciências da Universidade de Lisboa.<br>
-      Cloud · Security · Python · Linux · Java · JavaScript
+      Cloud · Security · AI/ML · Linux
     </p>
     <div class="hero-cta">
       <a href="https://www.linkedin.com/in/guilherme-ribeiro77/" target="_blank" class="btn btn-primary">LinkedIn</a>
@@ -543,34 +558,43 @@
   </div>
 </section>
 
+<section id="about" style="background: var(--cream-dark);">
+  <div class="section-label">about me</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="section-title reveal">Student &amp;<br>Developer</h2>
+      <div class="divider"></div>
+      <p class="about-text reveal">
+        I'm a <strong>3rd-year Information Technologies</strong> student at Faculdade de Ciências da Universidade de Lisboa, with a passion for building things — from automation scripts to cloud architectures. I believe technology should be elegant, efficient, and well thought-out. For my BSc project, I led the <strong>AWS architecture</strong> design and end-to-end <strong>infrastructure security</strong>, and I'm currently deepening my expertise in <strong>cloud computing</strong> and <strong>AWS</strong>.
+      </p>
+    </div>
+    <div>
+      <div class="about-card reveal">
+        <div class="about-card-label">education</div>
+        <div class="about-card-title">BSc in Information Technologies</div>
+        <div class="about-card-sub">Faculdade de Ciências da Universidade de Lisboa · 3rd Year</div>
+        <div class="about-card-label" style="margin-top:1.5rem;">certifications</div>
+        <div class="about-card-title" style="font-size:0.95rem;">Google Cybersecurity Certificate</div>
+        <div class="about-card-sub" style="font-size:0.9rem; margin-bottom:1rem;">Google · May 2025</div>
+        <div class="about-card-label">interests</div>
+        <div class="tag-list">
+          <span class="tag">Cloud Computing</span>
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">AI/ML</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="skills-section" id="skills">
   <div class="section-label" style="text-align:center;">skills</div>
   <h2 class="section-title reveal" style="text-align:center;">What I can do</h2>
   <div class="skills-grid">
     <div class="skill-card reveal">
-      <div class="skill-icon">🐍</div>
-      <div class="skill-name">Python</div>
-      <div class="skill-desc">Scripting, automation and application development</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⚡</div>
-      <div class="skill-name">JavaScript</div>
-      <div class="skill-desc">Web development, front-end and application logic</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">☕</div>
-      <div class="skill-name">Java</div>
-      <div class="skill-desc">Object-oriented programming and systems</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">📄</div>
-      <div class="skill-name">LaTeX</div>
-      <div class="skill-desc">Academic and technical documentation</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🐧</div>
-      <div class="skill-name">Linux</div>
-      <div class="skill-desc">System administration, terminal and shell scripting</div>
+      <div class="skill-icon">☁️</div>
+      <div class="skill-name">Cloud</div>
+      <div class="skill-desc">AWS cloud architectures and modern infrastructure</div>
     </div>
     <div class="skill-card reveal">
       <div class="skill-icon">🔒</div>
@@ -578,50 +602,30 @@
       <div class="skill-desc">Cybersecurity fundamentals and best practices</div>
     </div>
     <div class="skill-card reveal">
-      <div class="skill-icon">☁️</div>
-      <div class="skill-name">Cloud</div>
-      <div class="skill-desc">AWS cloud architectures and modern infrastructure</div>
-    </div>
-    <div class="skill-card reveal">
       <div class="skill-icon">🤖</div>
       <div class="skill-name">AI Tools</div>
       <div class="skill-desc">Working with AI assistants and integrating AI into workflows</div>
     </div>
-  </div>
-</section>
-
-<section id="about" style="background: var(--cream);">
-  <div class="section-label">about me</div>
-  <div class="about-grid">
-    <div>
-      <h2 class="section-title reveal">Student &amp;<br>Developer</h2>
-      <div class="divider"></div>
-      <p class="about-text reveal">
-        I'm in my <strong>3rd year of Information Technologies</strong> at Faculdade de Ciências da Universidade de Lisboa.<br><br>
-        I have a passion for building things — from automation scripts to cloud architectures. I believe technology should be elegant, efficient and well thought-out.<br><br>
-        Currently exploring the world of <strong>cloud computing</strong>, specifically <strong>AWS</strong>.
-      </p>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🐧</div>
+      <div class="skill-name">Linux</div>
+      <div class="skill-desc">System administration, terminal and shell scripting</div>
     </div>
-    <div>
-      <div class="about-card reveal">
-        <div class="about-card-label">education</div>
-        <div class="about-card-title">B.Sc. in Information Technologies</div>
-        <div class="about-card-sub">Faculdade de Ciências da Universidade de Lisboa · 3rd Year</div>
-        <div class="about-card-label" style="margin-top:1.5rem;">interests</div>
-        <div class="tag-list">
-          <span class="tag">Cloud Computing</span>
-          <span class="tag">AWS</span>
-          <span class="tag">Cybersecurity</span>
-          <span class="tag">AI</span>
-          <span class="tag">Linux</span>
-        </div>
-      </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-desc">Scripting, automation and application development</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">☕</div>
+      <div class="skill-name">Java</div>
+      <div class="skill-desc">Object-oriented programming and systems</div>
     </div>
   </div>
 </section>
 
 <section class="aws-section" id="aws">
-  <div class="section-label" style="text-align:center;">infrastructure</div>
+  <div class="section-label" style="text-align:center;">infrastructure of the website</div>
   <h2 class="section-title reveal" style="text-align:center;">How this site is<br>hosted on AWS</h2>
 
   <div class="aws-flow reveal">
@@ -701,7 +705,6 @@
 </section>
 
 <footer>
-  <p class="footer-made">Built with the help of <a href="https://claude.ai" target="_blank">Claude</a> ✦ Hosted on AWS S3 + CloudFront</p>
 </footer>
 
 <script>
@@ -728,14 +731,14 @@
       cursor.style.height = '18px';
       ring.style.width = '52px';
       ring.style.height = '52px';
-      ring.style.borderColor = 'rgba(192,57,43,0.7)';
+      ring.style.borderColor = 'rgba(200,16,46,0.7)';
     });
     el.addEventListener('mouseleave', () => {
       cursor.style.width = '12px';
       cursor.style.height = '12px';
       ring.style.width = '36px';
       ring.style.height = '36px';
-      ring.style.borderColor = 'rgba(192,57,43,0.4)';
+      ring.style.borderColor = 'rgba(200,16,46,0.4)';
     });
   });
 
