@@ -350,13 +350,21 @@
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
-    .about-card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--dark); }
+    .about-card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--dark); }
     .about-card-sub {
       font-family: var(--font-body);
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: var(--muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
     }
+    .edu-entry {
+      border-left: 2px solid var(--border);
+      padding-left: 0.85rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .edu-entry:hover { border-color: var(--red); }
+    .edu-entry:last-of-type { margin-bottom: 0; }
     .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .tag {
       font-family: var(--font-body);
@@ -499,6 +507,9 @@
       .hero-desc { font-size: 0.95rem; }
       footer { padding: 1.5rem; }
       .about-grid { grid-template-columns: 1fr; }
+      .about-card { padding: 1.5rem; }
+      .about-card-title { font-size: 1rem; }
+      .about-card-sub { font-size: 0.88rem; }
       .hero-line { display: none; }
       .skills-grid { gap: 0.8rem; }
       .skill-card { width: calc(50% - 0.5rem); min-width: 0; }
@@ -577,12 +588,20 @@
     <div>
       <div class="about-card reveal">
         <div class="about-card-label">education</div>
-        <div class="about-card-title">BSc in Information Technologies</div>
-        <div class="about-card-sub">Faculdade de Ciências da Universidade de Lisboa · 3rd Year</div>
+        <div class="edu-entry">
+          <div class="about-card-title">BSc in Information Technologies</div>
+          <div class="about-card-sub">Faculdade de Ciências da Universidade de Lisboa · 3rd Year</div>
+        </div>
+        <div class="edu-entry">
+          <div class="about-card-title">Minor in Statistics and Operational Research</div>
+          <div class="about-card-sub">Faculdade de Ciências da Universidade de Lisboa</div>
+        </div>
         <div class="about-card-label" style="margin-top:1.5rem;">certifications</div>
-        <div class="about-card-title" style="font-size:0.95rem;">Google Cybersecurity Certificate</div>
-        <div class="about-card-sub" style="font-size:0.9rem; margin-bottom:1rem;">Google · May 2025</div>
-        <div class="about-card-label">interests</div>
+        <div class="edu-entry">
+          <div class="about-card-title">Google Cybersecurity Certificate</div>
+          <div class="about-card-sub">Google · May 2025</div>
+        </div>
+        <div class="about-card-label" style="margin-top:1.5rem;">interests</div>
         <div class="tag-list">
           <span class="tag">Cloud Computing</span>
           <span class="tag">Cybersecurity</span>
