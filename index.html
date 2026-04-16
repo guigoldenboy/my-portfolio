@@ -118,29 +118,13 @@
         radial-gradient(ellipse 45% 55% at 25% 75%, rgba(255,102,0,0.04) 0%, transparent 60%);
       pointer-events: none;
     }
-    .hero-grid {
+    #rainCanvas {
       position: absolute;
       inset: 0;
-      background-image:
-        url('cloudthree.png'),
-        url('cloudthree.png'),
-        url('cloudthree.png'),
-        url('cloudthree.png'),
-        url('cloudthree.png'),
-        url('cloudthree.png'),
-        url('cloudthree.png');
-      background-size: 320px, 200px, 260px, 180px, 300px, 220px, 240px;
-      background-position:
-        5% 20%,
-        75% 10%,
-        40% 70%,
-        85% 60%,
-        20% 80%,
-        60% 35%,
-        50% 5%;
-      background-repeat: no-repeat;
-      opacity: 0.85;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
+      z-index: 0;
     }
     .hero-content {
       position: relative;
@@ -161,6 +145,7 @@
     .hero-name {
       font-size: clamp(3.5rem, 9vw, 7.5rem);
       font-weight: 800;
+      -webkit-text-stroke: 1.5px var(--dark);
       line-height: 0.95;
       letter-spacing: -0.03em;
       color: var(--dark);
@@ -168,7 +153,7 @@
       opacity: 0;
       animation: fadeUp 0.8s ease 0.4s forwards;
     }
-    .hero-name .accent { color: var(--red); }
+    .hero-name .accent { color: var(--red); -webkit-text-stroke-color: var(--red); }
     .hero-title {
       font-size: clamp(1rem, 2.5vw, 1.6rem);
       font-weight: 400;
@@ -505,50 +490,67 @@
 
     @media (max-width: 768px) {
       nav { padding: 1rem 1.2rem; }
-      .nav-links { gap: 0.9rem; }
-      .nav-links a { font-size: 0.76rem; letter-spacing: 0.05em; }
+      .nav-links { gap: 0.8rem; }
+      .nav-links a { font-size: 0.74rem; letter-spacing: 0.04em; }
 
-      .hero { min-height: 100svh; padding: 5.5rem 1.2rem 2.5rem; align-items: center; }
-      section { padding: 4rem 1.2rem; }
+      .hero { min-height: 100svh; padding: 6rem 1.4rem 3rem; align-items: center; }
+      section { padding: 4rem 1.4rem; }
 
-      .hero-name { font-size: clamp(2.6rem, 11vw, 4.2rem); }
-      .hero-title { font-size: clamp(0.95rem, 3.5vw, 1.3rem); }
-      .hero-desc { font-size: 0.93rem; max-width: 100%; }
-      .hero-cta { flex-direction: column; align-items: center; }
+      .hero-eyebrow { font-size: 0.85rem; letter-spacing: 0.12em; margin-bottom: 1.2rem; }
+      .hero-name {
+        font-size: clamp(2.8rem, 12vw, 4.2rem);
+        -webkit-text-stroke: 0.8px var(--dark);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        margin-bottom: 0.8rem;
+      }
+      .hero-name .accent { -webkit-text-stroke-color: var(--red); }
+      .hero-title { font-size: clamp(0.9rem, 3.2vw, 1.2rem); margin-bottom: 1.4rem; }
+      .hero-desc { font-size: 0.9rem; max-width: 100%; line-height: 1.7; margin-bottom: 2rem; }
+      .hero-cta { flex-direction: column; align-items: center; gap: 0.75rem; }
       .hero-line { display: none; }
 
-      .section-title { font-size: clamp(1.7rem, 6vw, 2.4rem); margin-bottom: 2rem; }
+      .section-label { font-size: 0.78rem; margin-bottom: 0.5rem; }
+      .section-title { font-size: clamp(1.8rem, 6.5vw, 2.4rem); margin-bottom: 1.8rem; }
+      .divider { margin-bottom: 1.4rem; }
 
       .about-grid { grid-template-columns: 1fr; max-width: 100%; gap: 2rem; }
+      .about-text { font-size: 0.95rem; line-height: 1.75; }
       .about-card { padding: 1.4rem; }
-      .about-card-title { font-size: 1rem; }
-      .about-card-sub { font-size: 0.88rem; }
-      .about-text { font-size: 0.97rem; }
+      .about-card-title { font-size: 0.97rem; }
+      .about-card-sub { font-size: 0.85rem; }
+      .tag { font-size: 0.82rem; padding: 0.25rem 0.65rem; }
 
       .skills-grid { gap: 0.75rem; }
-      .skill-card { width: calc(50% - 0.4rem); min-width: 0; }
+      .skill-card { width: calc(50% - 0.4rem); min-width: 0; padding: 1.2rem 1rem; }
+      .skill-name { font-size: 0.97rem; }
+      .skill-desc { font-size: 0.85rem; }
 
       .aws-arrow { display: none; }
       .aws-flow { gap: 0.75rem; flex-direction: column; align-items: center; }
-      .aws-flow-label { margin-bottom: 0.3rem; }
-      .aws-node { min-width: unset; width: 100%; max-width: 280px; padding: 1.1rem 1rem; }
+      .aws-flow-label { font-size: 0.76rem; margin-bottom: 0.3rem; }
+      .aws-node { min-width: unset; width: 100%; max-width: 300px; padding: 1.1rem 1rem; }
+      .aws-node-name { font-size: 0.97rem; }
       .aws-section .section-title { margin-bottom: 1rem; }
       .aws-flow:last-of-type { margin-bottom: 3rem; }
-      .aws-summary p { font-size: 0.93rem; }
+      .aws-summary p { font-size: 0.9rem; line-height: 1.75; }
 
       .contact-links { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 280px; justify-content: center; }
+      .btn { width: 100%; max-width: 280px; justify-content: center; font-size: 0.9rem; }
 
-      footer { padding: 1.5rem 1.2rem; }
+      footer { padding: 1.5rem 1.4rem; }
     }
 
     @media (max-width: 400px) {
-      nav { padding: 0.9rem 1rem; }
-      .nav-links { gap: 0.5rem; }
-      .nav-links a { font-size: 0.68rem; }
+      nav { padding: 0.85rem 1rem; }
+      .nav-links { gap: 0.55rem; }
+      .nav-links a { font-size: 0.66rem; }
+      .hero { padding: 5.5rem 1rem 2.5rem; }
+      section { padding: 3.5rem 1rem; }
+      .hero-name { font-size: clamp(2.4rem, 13vw, 3rem); -webkit-text-stroke: 0.5px var(--dark); }
+      .section-title { font-size: 1.65rem; }
       .skill-card { width: 100%; }
-      .hero-name { font-size: 2.2rem; }
-      .section-title { font-size: 1.6rem; }
+      .aws-node { max-width: 100%; }
     }
   </style>
 </head>
@@ -569,7 +571,7 @@
 
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <canvas id="rainCanvas"></canvas>
   <div class="hero-content">
     <p class="hero-eyebrow">student · developer</p>
     <h1 class="hero-name">Guilherme<br><span class="accent">Ribeiro</span></h1>
@@ -752,6 +754,54 @@
 </footer>
 
 <script>
+  // Rain animation
+  (function() {
+    const canvas = document.getElementById('rainCanvas');
+    const ctx = canvas.getContext('2d');
+    const hero = canvas.parentElement;
+
+    function resize() {
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const DROP_COUNT = 120;
+    const drops = [];
+
+    function randomDrop(fromTop) {
+      const isOrange = Math.random() < 0.25;
+      return {
+        x: Math.random() * canvas.width,
+        y: fromTop ? -Math.random() * canvas.height : Math.random() * canvas.height,
+        speed: 3 + Math.random() * 5,
+        length: 18 + Math.random() * 32,
+        opacity: 0.2 + Math.random() * 0.45,
+        width: 0.8 + Math.random() * 1.2,
+        color: isOrange ? '255,102,0' : '220,220,220',
+      };
+    }
+
+    for (let i = 0; i < DROP_COUNT; i++) drops.push(randomDrop(false));
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const d of drops) {
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x - d.length * 0.18, d.y + d.length);
+        ctx.strokeStyle = `rgba(${d.color},${d.opacity})`;
+        ctx.lineWidth = d.width;
+        ctx.stroke();
+        d.y += d.speed;
+        if (d.y - d.length > canvas.height) Object.assign(d, randomDrop(true), { y: -d.length });
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = -100, my = -100, rx = -100, ry = -100;
