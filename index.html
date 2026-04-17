@@ -7,6 +7,7 @@
   <style>
     @font-face { font-family: 'Plus Jakarta Sans'; src: url('Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf') format('truetype'); font-weight: 200 800; font-style: normal; font-display: swap; }
     @font-face { font-family: 'Plus Jakarta Sans'; src: url('Plus_Jakarta_Sans/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype'); font-weight: 200 800; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'Optician Sans'; src: url('OpticianSans/Webfont/Web-PS/Optiker-K.woff2') format('woff2'), url('OpticianSans/Webfont/Web-TT/Optiker-K.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
   </style>
   <style>
     :root {
@@ -23,8 +24,8 @@
       --dark: #ffffff;
       --text: #e8e8e8;
       --muted: #999999;
-      --font-display: 'Plus Jakarta Sans', sans-serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Optician Sans', 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Optician Sans', 'Plus Jakarta Sans', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -265,6 +266,24 @@
       color: var(--dark);
     }
 
+    .section-card {
+      background: var(--cream-light);
+      border: 1px solid var(--red);
+      border-radius: 24px;
+      padding: 3.5rem;
+      max-width: 100%;
+      margin: 0 1rem;
+    }
+
+    .section-divider {
+      width: 80px;
+      height: 4px;
+      background: var(--red);
+      border-radius: 50px;
+      margin: 0 auto;
+      opacity: 0.5;
+    }
+
     .skills-section { background: var(--cream); }
     .skills-grid {
       display: flex;
@@ -365,7 +384,7 @@
       box-shadow: 0 0 10px rgba(255,102,0,0.15);
     }
 
-    .aws-section { background: var(--cream-dark); }
+    .aws-section { background: var(--cream); }
     .aws-summary {
       max-width: 780px;
       display: flex;
@@ -514,6 +533,7 @@
       .section-title { font-size: clamp(1.8rem, 6.5vw, 2.4rem); margin-bottom: 1.8rem; }
       .divider { margin-bottom: 1.4rem; }
 
+      .section-card { padding: 1.8rem 1.2rem; border-radius: 16px; margin: 0 0.5rem; }
       .about-grid { grid-template-columns: 1fr; max-width: 100%; gap: 2rem; }
       .about-text { font-size: 0.95rem; line-height: 1.75; }
       .about-card { padding: 1.4rem; }
@@ -592,7 +612,8 @@
   </div>
 </section>
 
-<section id="about" style="background: var(--cream-dark);">
+<section id="about" style="background: var(--cream);">
+  <div class="section-card">
   <div class="about-grid">
     <div>
       <div class="section-label">about me</div>
@@ -631,9 +652,13 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
 
+<div class="section-divider"></div>
+
 <section class="skills-section" id="skills">
+  <div class="section-card">
   <div class="section-label" style="text-align:center;">skills</div>
   <h2 class="section-title reveal" style="text-align:center;">What I can do</h2>
   <div class="skills-grid">
@@ -667,10 +692,19 @@
       <div class="skill-name">Java</div>
       <div class="skill-desc">Object-oriented programming and systems</div>
     </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-name">Hardware</div>
+      <div class="skill-desc">General knowledge of PC components and how they work together</div>
+    </div>
+  </div>
   </div>
 </section>
 
+<div class="section-divider"></div>
+
 <section class="aws-section" id="aws">
+  <div class="section-card">
   <div class="section-label" style="text-align:center;">infrastructure of the website</div>
   <h2 class="section-title reveal" style="text-align:center;">How this website is<br>hosted on AWS</h2>
 
@@ -734,9 +768,13 @@
       the updated files to S3 — no manual uploads needed.
     </p>
   </div>
+  </div>
 </section>
 
+<div class="section-divider"></div>
+
 <section id="contact" style="background: var(--cream);">
+  <div class="section-card">
   <div class="contact-inner">
     <div class="section-label">contact me</div>
     <h2 class="section-title reveal">Let's talk</h2>
@@ -747,6 +785,7 @@
       <a href="https://www.linkedin.com/in/guilherme-ribeiro-6668bb28a/" target="_blank" class="btn btn-primary">LinkedIn</a>
       <a href="#" class="btn btn-secondary" id="emailBtn" onclick="copyEmail(event)">Email</a>
     </div>
+  </div>
   </div>
 </section>
 
@@ -853,7 +892,9 @@
 
   function smoothScrollTo(target, duration) {
     const start = window.scrollY;
-    const end = target.getBoundingClientRect().top + window.scrollY - 80;
+    const rect = target.getBoundingClientRect();
+    const sectionCenter = rect.top + window.scrollY + rect.height / 2;
+    const end = Math.max(rect.top + window.scrollY - 80, sectionCenter - window.innerHeight / 2);
     const distance = end - start;
     let startTime = null;
 
