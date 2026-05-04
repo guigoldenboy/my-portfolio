@@ -1,10 +1,9 @@
 version: 0.2
-
 phases:
   post_build:
     commands:
+      - aws s3 sync . s3://selfbuck7 --delete
       - aws cloudfront create-invalidation --distribution-id E1QALWFEO82022 --paths "/*"
-
 artifacts:
   files:
     - "**/*"
