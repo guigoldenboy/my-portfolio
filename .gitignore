@@ -1,0 +1,20 @@
+# os
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# claude code
+.claude/
+
+# logs
+*.log
+
+# environment
+.env
+.env.*
