@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guilherme Ribeiro — Dev & Student</title>
   <style>
-    @font-face { font-family: 'Plus Jakarta Sans'; src: url('Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf') format('truetype'); font-weight: 200 800; font-style: normal; font-display: swap; }
-    @font-face { font-family: 'Plus Jakarta Sans'; src: url('Plus_Jakarta_Sans/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype'); font-weight: 200 800; font-style: italic; font-display: swap; }
-@font-face { font-family: 'Tenor Sans'; src: url('Tenor_Sans/TenorSans-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Elms Sans'; src: url('Elms_Sans/ElmsSans-VariableFont_wght.ttf') format('truetype'); font-weight: 100 900; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Elms Sans'; src: url('Elms_Sans/ElmsSans-Italic-VariableFont_wght.ttf') format('truetype'); font-weight: 100 900; font-style: italic; font-display: swap; }
   </style>
   <style>
     :root {
@@ -17,15 +16,15 @@
       --warm: #2a2a2a;
       --card: #1c1c1c;
       --border: #303030;
-      --red: #DC143C;
-      --red-soft: #E84060;
-      --red-dim: rgba(220, 20, 60, 0.12);
-      --red-glow: rgba(220, 20, 60, 0.45);
+      --red: #C97A1A;
+      --red-soft: #D4891F;
+      --red-dim: rgba(201, 122, 26, 0.12);
+      --red-glow: rgba(201, 122, 26, 0.45);
       --dark: #ffffff;
       --text: #e8e8e8;
       --muted: #999999;
-      --font-display: 'Tenor Sans', 'Plus Jakarta Sans', sans-serif;
-      --font-body: 'Tenor Sans', 'Plus Jakarta Sans', sans-serif;
+      --font-display: 'Elms Sans', sans-serif;
+      --font-body: 'Elms Sans', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,7 +51,7 @@
     .cursor-ring {
       position: fixed;
       width: 36px; height: 36px;
-      border: 1.5px solid rgba(220,20,60,0.4);
+      border: 1.5px solid rgba(201,122,26,0.4);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9998;
@@ -115,8 +114,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 55% 65% at 65% 45%, rgba(220,20,60,0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 45% 55% at 25% 75%, rgba(220,20,60,0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 55% 65% at 65% 45%, rgba(201,122,26,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 55% at 25% 75%, rgba(201,122,26,0.04) 0%, transparent 60%);
       pointer-events: none;
     }
     #rainCanvas {
@@ -145,8 +144,8 @@
     }
     .hero-name {
       font-size: clamp(3.5rem, 9vw, 7.5rem);
-      font-weight: 800;
-      -webkit-text-stroke: 1.5px var(--dark);
+      font-weight: 500;
+      -webkit-text-stroke: 1px var(--dark);
       line-height: 0.95;
       letter-spacing: -0.03em;
       color: var(--dark);
@@ -203,7 +202,7 @@
       border: 2px solid var(--red);
     }
     .btn-primary:hover {
-      box-shadow: 0 0 28px var(--red-glow), 0 0 60px rgba(220,20,60,0.2);
+      box-shadow: 0 0 28px var(--red-glow), 0 0 60px rgba(201,122,26,0.2);
       transform: translateY(-2px);
     }
     .btn-secondary {
@@ -214,7 +213,7 @@
     .btn-secondary:hover {
       border-color: var(--red);
       color: var(--red);
-      box-shadow: 0 0 20px rgba(220,20,60,0.15);
+      box-shadow: 0 0 20px rgba(201,122,26,0.15);
       transform: translateY(-2px);
     }
 
@@ -312,14 +311,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(220,20,60,0.06), transparent 60%);
+      background: radial-gradient(circle at 50% 0%, rgba(201,122,26,0.06), transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
     }
     .skill-card:hover::before { opacity: 1; }
     .skill-card:hover {
       border-color: var(--red);
-      box-shadow: 0 0 22px rgba(220,20,60,0.12);
+      box-shadow: 0 0 22px rgba(201,122,26,0.12);
       transform: translateY(-3px);
     }
     .skill-icon { font-size: 1.6rem; margin-bottom: 0.9rem; }
@@ -388,7 +387,7 @@
     .tag:hover {
       border-color: var(--red);
       color: var(--red);
-      box-shadow: 0 0 10px rgba(220,20,60,0.15);
+      box-shadow: 0 0 10px rgba(201,122,26,0.15);
     }
 
     .aws-section { background: var(--cream); }
@@ -442,7 +441,7 @@
     }
     .aws-node:hover {
       border-color: var(--red);
-      box-shadow: 0 0 20px rgba(220,20,60,0.12);
+      box-shadow: 0 0 20px rgba(201,122,26,0.12);
     }
     .aws-node-icon { font-size: 2rem; margin-bottom: 0.6rem; }
     .aws-node-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; color: var(--dark); }
@@ -559,24 +558,24 @@
     }
     .slider-btn:hover {
       border-color: var(--red);
-      background: rgba(220,20,60,0.08);
-      box-shadow: 0 0 14px rgba(220,20,60,0.25);
+      background: rgba(201,122,26,0.08);
+      box-shadow: 0 0 14px rgba(201,122,26,0.25);
     }
     .slider-btn-prev { left: -19px; }
     .slider-btn-next { right: -19px; }
     .slider-btn.hidden { opacity: 0; pointer-events: none; }
 
     @keyframes crimsonPulse {
-      0%, 100% { box-shadow: 0 0 8px rgba(220,20,60,0.2), 0 0 18px rgba(220,20,60,0.08); }
-      50%       { box-shadow: 0 0 22px rgba(220,20,60,0.55), 0 0 45px rgba(220,20,60,0.2); }
+      0%, 100% { box-shadow: 0 0 8px rgba(201,122,26,0.2), 0 0 18px rgba(201,122,26,0.08); }
+      50%       { box-shadow: 0 0 22px rgba(201,122,26,0.55), 0 0 45px rgba(201,122,26,0.2); }
     }
 
     .projects-section { background: var(--cream); }
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     .project-card {
@@ -587,13 +586,13 @@
       transition: transform 0.2s, box-shadow 0.2s;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 0 18px rgba(220,20,60,0.35), 0 0 40px rgba(220,20,60,0.12);
+      box-shadow: 0 0 18px rgba(201,122,26,0.35), 0 0 40px rgba(201,122,26,0.12);
     }
     .project-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(220,20,60,0.06), transparent 60%);
+      background: radial-gradient(circle at 50% 0%, rgba(201,122,26,0.06), transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -622,9 +621,9 @@
       font-size: 0.82rem;
       padding: 0.28rem 0.75rem;
       border-radius: 50px;
-      border: 1px solid rgba(220,20,60,0.35);
+      border: 1px solid rgba(201,122,26,0.35);
       color: var(--red);
-      background: rgba(220,20,60,0.07);
+      background: rgba(201,122,26,0.07);
       letter-spacing: 0.04em;
     }
 
@@ -747,11 +746,6 @@
       <a href="https://github.com/guigoldenboy" target="_blank" class="btn btn-secondary">GitHub</a>
     </div>
   </div>
-  <div class="hero-line">
-    <div class="hero-line-bar"></div>
-    <span>scroll</span>
-    <div class="hero-line-bar"></div>
-  </div>
 </section>
 
 <section id="about" style="background: var(--cream);">
@@ -762,7 +756,7 @@
       <h2 class="section-title reveal">Student &amp;<br>Developer</h2>
       <div class="divider"></div>
       <p class="about-text reveal">
-        I'm a <strong>3rd-year IT</strong> student at Faculdade de Ciências da Universidade de Lisboa, with a passion for building things — from automation scripts to cloud architectures. I believe technology should be elegant, efficient, and well thought-out. For my BSc final project, I led the <strong>AWS architecture</strong> design and end-to-end <strong>infrastructure security</strong>, and I'm currently deepening my expertise in <strong>cloud computing</strong> and <strong>AWS</strong>.
+        I'm a <strong>3rd-year IT</strong> student at Faculdade de Ciências da Universidade de Lisboa with a passion for building things — from cloud infrastructures to security systems. I enjoy designing solutions that are both robust and well thought-out. For my BSc final project, I led the <strong>AWS architecture</strong> design and end-to-end <strong>infrastructure security</strong>, and I'm currently deepening my expertise in <strong>cloud computing</strong> and threat detection.
       </p>
     </div>
     <div>
@@ -809,7 +803,7 @@
     <div class="skill-card reveal">
       <div class="skill-icon">☁️</div>
       <div class="skill-name">Cloud</div>
-      <div class="skill-desc">AWS cloud architectures and modern infrastructure</div>
+      <div class="skill-desc">AWS cloud architectures, modern infrastructure, and cloud security</div>
     </div>
     <div class="skill-card reveal">
       <div class="skill-icon">🔒</div>
@@ -837,14 +831,14 @@
       <div class="skill-desc">Object-oriented programming and systems</div>
     </div>
     <div class="skill-card reveal">
-      <div class="skill-icon">🔧</div>
-      <div class="skill-name">Hardware</div>
-      <div class="skill-desc">General knowledge of PC components and how they work together</div>
-    </div>
-    <div class="skill-card reveal">
       <div class="skill-icon">🌿</div>
       <div class="skill-name">Git</div>
       <div class="skill-desc">Version control, branching workflows and collaborative development</div>
+    </div>
+        <div class="skill-card reveal">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-name">Hardware</div>
+      <div class="skill-desc">General knowledge of PC components and how they work together</div>
     </div>
   </div>
   <button class="slider-btn slider-btn-next" id="skillsNext" aria-label="Next">&#8594;</button>
@@ -856,7 +850,7 @@
 
 <section class="projects-section" id="projects">
   <div class="section-card">
-    <div class="section-label" style="text-align:center;">projects</div>
+    <div class="section-label" style="text-align:center;">cloud projects</div>
     <h2 class="section-title reveal" style="text-align:center;">What I've built</h2>
     <div class="projects-grid">
       <div class="project-card reveal">
@@ -873,6 +867,20 @@
           <span class="project-skill">Docker</span>
           <span class="project-skill">Keepalived</span>
           <span class="project-skill">Shell Scripts</span>
+          <span class="project-skill">nmap</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-name">AWS Honeytoken Detection System 🍯</div>
+        <div class="project-desc">Serverless AWS intrusion detection system using two honeytokens — fake IAM credentials and a fake S3 bucket. Detects access in real time via CloudTrail, CloudWatch Logs, Lambda and SNS, with distinct alerts per attack type and attacker geolocation.</div>
+        <div class="project-skills">
+          <span class="project-skill">AWS CloudTrail</span>
+          <span class="project-skill">AWS CloudWatch Logs</span>
+          <span class="project-skill">AWS Lambda</span>
+          <span class="project-skill">AWS SNS</span>
+          <span class="project-skill">AWS S3</span>
+          <span class="project-skill">AWS IAM</span>
+          <span class="project-skill">Python</span>
         </div>
       </div>
       <div class="project-card reveal">
@@ -880,9 +888,9 @@
         <div class="project-desc">A static portfolio (this one) hosted entirely on AWS, with a fully automated CI/CD pipeline. Every push to GitHub triggers CodePipeline, which deploys to S3 and invalidates the CloudFront cache automatically.</div>
         <div class="project-skills">
           <span class="project-skill">AWS S3</span>
-          <span class="project-skill">CloudFront</span>
-          <span class="project-skill">CodePipeline</span>
-          <span class="project-skill">CodeBuild</span>
+          <span class="project-skill">AWS CloudFront</span>
+          <span class="project-skill">AWSCodePipeline</span>
+          <span class="project-skill">AWS CodeBuild</span>
         </div>
       </div>
     </div>
@@ -1006,7 +1014,7 @@
         length: 18 + Math.random() * 32,
         opacity: 0.2 + Math.random() * 0.45,
         width: 0.8 + Math.random() * 1.2,
-        color: isOrange ? '220,20,60' : '220,220,220',
+        color: isOrange ? '201,122,26' : '220,220,220',
       };
     }
 
@@ -1052,14 +1060,14 @@
       cursor.style.height = '18px';
       ring.style.width = '52px';
       ring.style.height = '52px';
-      ring.style.borderColor = 'rgba(220,20,60,0.7)';
+      ring.style.borderColor = 'rgba(201,122,26,0.7)';
     });
     el.addEventListener('mouseleave', () => {
       cursor.style.width = '12px';
       cursor.style.height = '12px';
       ring.style.width = '36px';
       ring.style.height = '36px';
-      ring.style.borderColor = 'rgba(220,20,60,0.4)';
+      ring.style.borderColor = 'rgba(201,122,26,0.4)';
     });
   });
 
