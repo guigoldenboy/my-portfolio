@@ -512,6 +512,7 @@
       body { cursor: auto; }
       .btn { cursor: pointer; }
       .slider-btn { display: none; }
+      .nav-hamburger { cursor: pointer; }
     }
 
     .nav-hamburger {
@@ -521,10 +522,11 @@
       gap: 5px;
       background: none;
       border: none;
-      cursor: none;
+      cursor: pointer;
       padding: 6px;
       z-index: 101;
       position: relative;
+      transition: opacity 0.2s ease;
     }
     .nav-hamburger span {
       display: block;
@@ -534,9 +536,12 @@
       border-radius: 2px;
       transition: transform 0.3s ease, opacity 0.2s ease;
     }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-hamburger.hidden-menu { opacity: 0; pointer-events: none; }
+
+    /* Close button inside overlay — hidden on desktop */
+    .nav-close {
+      display: none;
+    }
 
     .skills-slider { position: relative; }
     .slider-btn {
@@ -630,23 +635,88 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.2rem; }
       .nav-hamburger { display: flex; }
+
+      /* Side drawer (top-right) */
       .nav-links {
         position: fixed;
-        inset: 0;
-        background: rgba(11,11,11,0.97);
-        backdrop-filter: blur(16px);
+        top: 0;
+        right: 0;
+        width: min(78vw, 320px);
+        height: auto;
+        max-height: 70vh;
+        background: rgba(10,10,10,0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        border-bottom-left-radius: 16px;
+        box-shadow: -8px 8px 32px rgba(0,0,0,0.35);
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2.5rem;
-        z-index: 100;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1.3rem;
+        padding: 4rem 2rem 2rem;
+        z-index: 200;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s ease;
+        transform: translateX(100%);
+        transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
-      .nav-links.open { opacity: 1; pointer-events: all; }
-      .nav-links a { font-size: 1.3rem; letter-spacing: 0.12em; color: var(--text); }
+      .nav-links.open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateX(0);
+      }
+
+      /* Links inside drawer */
+      .nav-links a {
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--text);
+        position: relative;
+        transition: color 0.2s ease;
+      }
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--red);
+        border-radius: 2px;
+        transition: width 0.3s ease;
+      }
       .nav-links a:hover { color: var(--red); }
+      .nav-links a:hover::after { width: 100%; }
+
+      /* Close button inside overlay */
+      .nav-close {
+        display: flex;
+        position: absolute;
+        top: 1.1rem;
+        right: 1.2rem;
+        background: none;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.05rem;
+        cursor: pointer;
+        transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+        font-family: var(--font-body);
+      }
+      .nav-close:hover {
+        border-color: var(--red);
+        color: var(--red);
+        box-shadow: 0 0 14px rgba(201,122,26,0.2);
+      }
 
       .hero { min-height: 100svh; padding: 6rem 1.4rem 3rem; align-items: center; }
       section { padding: 4rem 1.4rem; }
@@ -700,8 +770,6 @@
 
     @media (max-width: 400px) {
       nav { padding: 0.85rem 1rem; }
-      .nav-links { gap: 0.55rem; }
-      .nav-links a { font-size: 0.66rem; }
       .hero { padding: 5.5rem 1rem 2.5rem; }
       section { padding: 3.5rem 1rem; }
       .hero-name { font-size: clamp(2.4rem, 13vw, 3rem); -webkit-text-stroke: 0.5px var(--dark); }
@@ -719,6 +787,7 @@
 <nav>
   <div class="nav-logo">G<span>. </span>Ribeiro</div>
   <div class="nav-links" id="navLinks">
+    <button class="nav-close" id="navClose" aria-label="Fechar menu">✕</button>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
@@ -1155,17 +1224,30 @@
   (function() {
     const hamburger = document.getElementById('navHamburger');
     const navLinks  = document.getElementById('navLinks');
+    const navClose  = document.getElementById('navClose');
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
+    function openMenu() {
+      navLinks.classList.add('open');
+      hamburger.classList.add('hidden-menu');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('hidden-menu');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    navClose.addEventListener('click', closeMenu);
 
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Fechar com tecla Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
     });
   })();
 </script>
