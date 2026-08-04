@@ -511,7 +511,6 @@
       .cursor, .cursor-ring { display: none; }
       body { cursor: auto; }
       .btn { cursor: pointer; }
-      .slider-btn { display: none; }
       .nav-hamburger { cursor: pointer; }
     }
 
@@ -569,6 +568,11 @@
     .slider-btn-prev { left: -19px; }
     .slider-btn-next { right: -19px; }
     .slider-btn.hidden { opacity: 0; pointer-events: none; }
+
+    /* touch devices: swipe instead of arrow buttons, avoid overlapping card content */
+    @media (hover: none) and (pointer: coarse) {
+      .slider-btn { display: none; }
+    }
 
     @keyframes crimsonPulse {
       0%, 100% { box-shadow: 0 0 8px rgba(201,122,26,0.2), 0 0 18px rgba(201,122,26,0.08); }
