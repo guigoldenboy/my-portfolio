@@ -576,14 +576,24 @@
     }
 
     .projects-section { background: var(--cream); }
+    .projects-slider { position: relative; max-width: 1200px; margin: 0 auto; }
     .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: nowrap;
       gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 40px 24px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 40px 24px;
+      margin: -40px -24px;
     }
+    .projects-grid::-webkit-scrollbar { display: none; }
     .project-card {
+      flex: 0 0 calc((100% - 3rem) / 3);
+      min-width: 0;
+      scroll-snap-align: start;
       background: var(--card);
       border: 1px solid var(--red);
       border-radius: 16px;
@@ -605,7 +615,6 @@
       pointer-events: none;
     }
     .project-card:hover::before { opacity: 1; }
-    .project-card:hover { transform: translateY(-3px); }
     .project-name {
       font-size: 1.15rem;
       font-weight: 700;
@@ -794,7 +803,8 @@
 
       .skills-grid { gap: 0.75rem; }
       .skill-card { flex: 0 0 calc((100% - 0.75rem) / 2.2); padding: 1.2rem 1rem; }
-      .projects-grid { grid-template-columns: 1fr; }
+      .projects-grid { gap: 0.75rem; }
+      .project-card { flex: 0 0 calc(100% - 1.5rem); padding: 1.5rem; }
       .skill-name { font-size: 0.97rem; }
       .skill-desc { font-size: 0.85rem; }
 
@@ -965,8 +975,10 @@
   <div class="section-card">
     <div class="section-label" style="text-align:center;">cloud projects</div>
     <h2 class="section-title reveal" style="text-align:center;">What I've built</h2>
-    <div class="projects-grid">
-      <div class="project-card reveal">
+    <div class="projects-slider">
+    <button class="slider-btn slider-btn-prev hidden" id="projectsPrev" aria-label="Previous">&#8592;</button>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="project-card">
         <div class="project-name">Need4Rides Infrastructure (BSc final project)</div>
         <div class="project-desc">A distributed cloud infrastructure for a taxi management system, featuring high-availability load balancers, automated failover, and replica set database management. Deployed on AWS with custom automation scripts.</div>
         <div class="project-skills">
@@ -988,7 +1000,7 @@
           <div class="project-grade">Grade: 19/20</div>
         </div>
       </div>
-      <div class="project-card reveal">
+      <div class="project-card">
         <div class="project-name">AWS Honeytoken Detection System 🍯</div>
         <div class="project-desc">Serverless AWS intrusion detection system using two honeytokens — fake IAM credentials and a fake S3 bucket. Detects access in real time via CloudTrail, CloudWatch Logs, Lambda and SNS, with distinct alerts per attack type and attacker geolocation.</div>
         <div class="project-skills">
@@ -1004,7 +1016,23 @@
           <a class="project-private" href="https://github.com/guigoldenboy/aws-honeytoken-detection" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
-      <div class="project-card reveal">
+      <div class="project-card">
+        <div class="project-name">mySaude (BSc security group project)</div>
+        <div class="project-desc">Secure health file storage system using hybrid encryption, digital signatures, and TLS-encrypted client-server communication. Supports authenticated users with SHA-256 salted passwords, integrity verification, and role-based access control, protected by iptables firewall rules and Snort intrusion detection with port scan, brute force, and ping flood alerts.</div>
+        <div class="project-skills">
+          <span class="project-skill">Python</span>
+          <span class="project-skill">Cryptography</span>
+          <span class="project-skill">Acess Control</span>
+          <span class="project-skill">Snort</span>
+          <span class="project-skill">HMAC</span>
+          <span class="project-skill">iptables</span>
+        </div>
+        <div class="project-badges">
+          <a class="project-private" href="https://github.com/silence-crown/mySaude-SegurancaInformatica" target="_blank" rel="noopener">GitHub</a>
+          <div class="project-grade">Grade: 19/20</div>
+        </div>
+      </div>
+      <div class="project-card">
         <div class="project-name">Personal Website</div>
         <div class="project-desc">A static website (this one) hosted entirely on AWS, with a fully automated CI/CD pipeline. Every push to GitHub triggers CodePipeline, which deploys to S3 and invalidates the CloudFront cache automatically.</div>
         <div class="project-skills">
@@ -1017,6 +1045,8 @@
           <a class="project-private" href="https://github.com/guigoldenboy/my-portfolio" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
+    </div>
+    <button class="slider-btn slider-btn-next" id="projectsNext" aria-label="Next">&#8594;</button>
     </div>
   </div>
 </section>
@@ -1267,6 +1297,27 @@
     function updateBtns() {
       prevBtn.classList.toggle('hidden', grid.scrollLeft <= 1);
       nextBtn.classList.toggle('hidden', grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 1);
+    }
+
+    prevBtn.addEventListener('click', () => grid.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => grid.scrollBy({ left:  scrollAmount(), behavior: 'smooth' }));
+    grid.addEventListener('scroll', updateBtns, { passive: true });
+    updateBtns();
+  })();
+
+  (function() {
+    const grid = document.getElementById('projectsGrid');
+    const prevBtn = document.getElementById('projectsPrev');
+    const nextBtn = document.getElementById('projectsNext');
+
+    function scrollAmount() {
+      const card = grid.querySelector('.project-card');
+      return card ? card.offsetWidth + 24 : 300;
+    }
+
+    function updateBtns() {
+      prevBtn.classList.toggle('hidden', grid.scrollLeft <= 30);
+      nextBtn.classList.toggle('hidden', grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 30);
     }
 
     prevBtn.addEventListener('click', () => grid.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
