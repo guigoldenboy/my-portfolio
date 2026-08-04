@@ -1,1 +1,1 @@
-all info about this project @guigoldenboy.xyz
+all info about this project can be found @ guigoldenboy.xyz
