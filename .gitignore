@@ -20,3 +20,6 @@ desktop.ini
 # environment
 .env
 .env.*
+
+# notas locais
+cores.md
